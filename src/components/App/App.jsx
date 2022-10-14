@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import TechnicianView from '../TechnicianView/TechnicianView';
+import DispatchView from '../DispatchView/DispatchView';
 
 import './App.css';
 
@@ -59,10 +60,11 @@ function App() {
             path="/user"
           >
             {user.position === "Technician" ?
+              // if user is a technician - display technician landing page
               <TechnicianView />
               :
-              // Otherwise, show the login page
-              <UserPage />
+              // Otherwise, show the dispatch landing page
+              <DispatchView />
             }
           </ProtectedRoute>
 
