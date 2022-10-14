@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import TechnicianView from '../TechnicianView/TechnicianView';
 import DispatchView from '../DispatchView/DispatchView';
 import ProfileView from '../ProfileView/ProfileView';
+import AllUsersView from '../AllUsersView/AllUsersView';
 
 import './App.css';
 
@@ -66,6 +67,20 @@ function App() {
               :
               // Otherwise, show the dispatch landing page
               <DispatchView />
+            }
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in as dispatch shows AllUsersView, else shows LoginPage
+            exact
+            path="/all/users"
+          >
+            {user.position === "Dispatcher" ?
+              // if user is a technician - display technician landing page
+              <AllUsersView />
+              :
+              // Otherwise, show the dispatch landing page
+              <Redirect to="/user" />
             }
           </ProtectedRoute>
 
