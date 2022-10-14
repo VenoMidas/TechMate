@@ -64,4 +64,28 @@ router.put('/:id', (req, res) => {
   };
 });
 
+router.get('/all', rejectUnauthenticated, (req, res) => {
+  let queryText = `SELECT * FROM "user";`;
+  pool.query(queryText)
+    .then((result) => {
+      res.send(result.rows);
+    }).catch((error) => {
+      res.sendStatus(500);
+    });
+});
+
+router.delete('/:id', (req, res) => {
+  if (req.isAuthenticated()) {
+    const queryText = `DELETE FROM "user" WHERE "id" = $1;`;
+    pool.query(queryText, [req.params.id]).then(() => {
+      res.sendStatus(200);
+    }).catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+  } else {
+    res.sendStatus(403); // forbidden
+  };
+});
+
 module.exports = router;
