@@ -9,10 +9,10 @@ function ProfileView() {
     const [classification, setClassification] = useState(user.classification);
     const dispatch = useDispatch();
 
-    const updateProfile = (event, userId) => {
+    const updateProfile = (event) => {
         event.preventDefault();
         console.log('In updateProfile');
-        axios.put(`/api/user/${userId}`, { first_name: firstName, last_name: lastName, classification: classification })
+        axios.put(`/api/user/${user.id}`, { first_name: firstName, last_name: lastName, classification: classification })
             .then(() => {
                 dispatch({ type: 'FETCH_USER' });
             }).catch((error) => {
