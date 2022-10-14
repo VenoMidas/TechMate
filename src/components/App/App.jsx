@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import TechnicianView from '../TechnicianView/TechnicianView';
 import DispatchView from '../DispatchView/DispatchView';
+import ProfileView from '../ProfileView/ProfileView';
 
 import './App.css';
 
@@ -55,7 +56,7 @@ function App() {
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows technician or dispatch view, else shows LoginPage
             exact
             path="/user"
           >
@@ -74,6 +75,14 @@ function App() {
             path="/info"
           >
             <InfoPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows profile page else shows LoginPage
+            exact
+            path="/profile"
+          >
+            <ProfileView />
           </ProtectedRoute>
 
           <Route
