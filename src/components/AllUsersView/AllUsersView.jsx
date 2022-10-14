@@ -7,7 +7,7 @@ function AllUsersView() {
     const [allUsers, setAllUsers] = useState([])
 
     useEffect(() => {
-        // getAllUsers();
+        getAllUsers();
     }, []);
 
     const getAllUsers = () => {
@@ -24,8 +24,21 @@ function AllUsersView() {
     return (
         <div className="container">
             <h2>Welcome to the all users page, {user.username}!</h2>
-            <p>Your position is: {user.position}</p>
-            display all users here
+            {
+                allUsers.map(user => {
+                    return (
+                        <ul key={user.id}>
+                            <li>{user.first_name}</li>
+                            <li>{user.last_name}</li>
+                            <li>{user.classification}</li>
+                            <li>{user.position}</li>
+                            <div>
+                                <button>Delete</button>
+                            </div>
+                        </ul>
+                    );
+                })
+            }
         </div>
     );
 };
