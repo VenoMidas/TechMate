@@ -21,6 +21,10 @@ function AllUsersView() {
             });
     };
 
+    const deleteUser = () => {
+        console.log('In deleteUser');
+    };
+
     return (
         <div className="container">
             <h2>Welcome to the all users page, {user.username}!</h2>
@@ -33,7 +37,7 @@ function AllUsersView() {
                             <li>{user.classification}</li>
                             <li>{user.position}</li>
                             <div>
-                                <button>Delete</button>
+                                <button onClick={() => deleteUser(user.id)}>Delete</button>
                             </div>
                         </ul>
                     );
