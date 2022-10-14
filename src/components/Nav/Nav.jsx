@@ -21,8 +21,8 @@ function Nav() {
           </Link>
         )}
 
-        {/* If a user is logged in, show these links */}
-        {user.id && (
+        {/* If a user is logged in as technician, show these links */}
+        {user.position === "Technician" && (
           <>
             <Link className="navLink" to="/user">
               Home
@@ -34,6 +34,29 @@ function Nav() {
 
             <Link className="navLink" to="/info">
               Info Page
+            </Link>
+
+            <LogOutButton className="navLink" />
+          </>
+        )}
+
+        {/* If a user is logged in as dispatcher, show these links */}
+        {user.position === "Dispatcher" && (
+          <>
+            <Link className="navLink" to="/user">
+              Home
+            </Link>
+
+            <Link className="navLink" to="/profile">
+              Profile
+            </Link>
+
+            <Link className="navLink" to="/info">
+              Info Page
+            </Link>
+
+            <Link className="navLink" to="/all/users">
+              All Users Page
             </Link>
 
             <LogOutButton className="navLink" />
