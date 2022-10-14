@@ -48,4 +48,20 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.put('/:id', (req, res) => {
+  if (req.isAuthenticated()) {
+    const queryText = `UPDATE "user" SET "first_name" = $1, "last_name" = $2, "classification" = $3
+                       WHERE "id" = $4;`;
+    pool.query(queryText, [req.body.first_name, req.body.last_name, req.body.classification, req.params.id])
+      .then(() => {
+        res.sendStatus(200);
+      }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403); // forbidden
+  };
+});
+
 module.exports = router;
