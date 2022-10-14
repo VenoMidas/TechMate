@@ -12,7 +12,6 @@ function ProfileView() {
             <p>Your first name is: {user.first_name}</p>
             <p>Your first name is: {user.last_name}</p>
             inputs to PUT /api/user here
-            <LogOutButton className="btn" />
         </div>
     );
 };
