@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import TechnicianView from '../TechnicianView/TechnicianView';
 
 import './App.css';
 
@@ -57,7 +58,12 @@ function App() {
             exact
             path="/user"
           >
-            <UserPage />
+            {user.position === "Technician" ?
+              <TechnicianView />
+              :
+              // Otherwise, show the login page
+              <UserPage />
+            }
           </ProtectedRoute>
 
           <ProtectedRoute
