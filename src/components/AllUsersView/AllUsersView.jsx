@@ -1,15 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 function AllUsersView() {
     const user = useSelector((store) => store.user);
+    const [allUsers, setAllUsers] = useState([])
 
     useEffect(() => {
-        getAllUsers();
+        // getAllUsers();
     }, []);
 
     const getAllUsers = () => {
         console.log('In getAllUsers');
+        axios.get('/api/user/all')
+            .then((response) => {
+                setAllUsers(response.data);
+            }).catch((error) => {
+                console.log(error);
+                alert('Something went wrong.')
+            });
     };
 
     return (
