@@ -21,8 +21,15 @@ function AllUsersView() {
             });
     };
 
-    const deleteUser = () => {
+    const deleteUser = (userId) => {
         console.log('In deleteUser');
+        axios.delete(`/api/user/${userId}`)
+            .then(() => {
+                getAllUsers();
+            }).catch((error) => {
+                console.log(error);
+                alert('Something went wrong');
+            });
     };
 
     return (
