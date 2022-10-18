@@ -110,3 +110,24 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+/* --------------------------------------------------------------------------------
+Technician View - Technician Status Items
+-------------------------------------------------------------------------------- */
+
+.statusItem {
+  padding: 20px;
+  margin: 20px;
+}
+
+.green {
+  border: 1px solid green;
+}
+
+.yellow {
+  border: 1px solid goldenrod;
+}
+
+.red {
+  border: 1px solid red;
+}
