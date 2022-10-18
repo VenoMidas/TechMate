@@ -12,9 +12,9 @@ function TechnicianView() {
         console.log('in postTechnicianStatus');
         let statusNumber = 1 // needs to be the status user clicked on
         let details = 'Open for work!' // the message of the status
-        axios.post('/api/message/', { status_number: statusNumber, deatils: details, user_id: user.id })
+        axios.post(`/api/message/${user.id}`, { status_number: statusNumber, details: details })
             .then(() => {
-                dispatch({ type: '' }); // want to fetch a user update for status to display on screen
+                dispatch({ type: '' }); // want to fetch a user update for status to display on screen or something with RETURNING status_number
             }).catch((error) => {
                 console.log(error);
                 alert('Something went wrong!');
