@@ -9,7 +9,7 @@ function TechnicianView() {
             <h2>Welcome to the technician page, {user.username}!</h2>
             <p>Your ID is: {user.id}</p>
             <p>Your position is: {user.position}</p>
-            <LogOutButton className="btn" />
+            
         </div>
     );
 };
