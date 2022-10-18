@@ -9,7 +9,9 @@ function TechnicianView() {
             <h2>Welcome to the technician page, {user.username}!</h2>
             <p>Your ID is: {user.id}</p>
             <p>Your position is: {user.position}</p>
-            
+            <div className="statusItem green">Status 1</div>
+            <div className="statusItem yellow">Status 2</div>
+            <div className="statusItem red">Status 3</div>
         </div>
     );
 };
