@@ -3,8 +3,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* fetchStatus(action) {
     try {
-        const status = yield axios.get(`/api/message/${action.payload}`);
-        yield put({ type: 'SET_STATUS', payload: status.data });
+        const response = yield axios.get(`/api/message/${action.payload}`);
+        yield put({ type: 'SET_STATUS', payload: response.data });
     } catch (error) {
         console.log('Error in fetchStatus', error);
         alert('Something went wrong!');

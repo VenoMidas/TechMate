@@ -27,7 +27,7 @@ function TechnicianView() {
     return (
         <div className="container">
             <h2>Welcome to the technician page, {user.username}!</h2>
-            <p>Your status is: {status[0].details}</p>
+            <p>Your status is: {status.details}</p>
             <p>Your position is: {user.position}</p>
             <div onClick={() => postTechnicianStatus(1, 'Open for work!')} className="statusItem green">Status 1 - Open for work!</div>
             <div onClick={() => postTechnicianStatus(2, 'On break!')} className="statusItem yellow">Status 2 - On break!</div>
