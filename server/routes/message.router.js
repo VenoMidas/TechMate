@@ -35,7 +35,8 @@ router.get('/status/all', (req, res) => {
                          SELECT "user_id", MAX("created_at_timestamp") "max_timestamp"
                          FROM "message"
                          GROUP BY "user_id"
-                      ) AS "timestamp" ON "timestamp"."max_timestamp" = "message"."created_at_timestamp";`;
+                      ) AS "timestamp" ON "timestamp"."max_timestamp" = "message"."created_at_timestamp"
+                      ORDER BY "status_number";`;
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);

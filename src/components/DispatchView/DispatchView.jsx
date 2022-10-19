@@ -16,8 +16,18 @@ function DispatchView() {
             <h2>Welcome to the dispatch page, {user.username}!</h2>
             <p>Your ID is: {user.id}</p>
             <p>Your position is: {user.position}</p>
-            <p>{JSON.stringify(techStatus)}</p>
-            <LogOutButton className="btn" />
+            {
+                techStatus.map(tech => {
+                    return (
+                        <ul key={tech.id} >
+                            <li>{tech.first_name}</li>
+                            <li>{tech.last_name}</li>
+                            <li>{tech.classification}</li>
+                            <li>{tech.details}</li>
+                        </ul>
+                    )
+                })
+            }
         </div>
     );
 };
