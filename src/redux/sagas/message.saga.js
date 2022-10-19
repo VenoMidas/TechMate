@@ -11,8 +11,19 @@ function* fetchStatus(action) {
     };
 };
 
+function* fetchTechStatus() {
+    try {
+        const response = yield axios.get(`/api/message/status/all`);
+        yield put({ type: 'SET_TECH_STATUS', payload: response.data })
+    } catch (error) {
+        console.log('Error in fetchTechStatus', error);
+        alert('Something went wrong!');
+    };
+};
+
 function* messageSaga() {
     yield takeLatest('FETCH_STATUS', fetchStatus);
+    yield takeLatest('FETCH_TECH_STATUS', fetchTechStatus)
 }
 
 export default messageSaga;

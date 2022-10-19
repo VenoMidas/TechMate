@@ -15,13 +15,31 @@ router.post('/:id', (req, res) => {
         });
 });
 
-// GET route for message/status
+// GET route for individual message/status
 router.get('/:id', (req, res) => {
     let queryText = `SELECT * FROM "message" WHERE "user_id" = $1 ORDER BY "created_at_timestamp" DESC LIMIT 1;`;
     pool.query(queryText, [req.params.id])
         .then((result) => {
             console.log(result.rows[0])
             res.send(result.rows[0]);
+        }).catch((error) => {
+            res.sendStatus(500);
+        });
+});
+
+// GET route for all techs message/status
+router.get('/status/all', (req, res) => {
+    let queryText = `SELECT * FROM "user"
+                      INNER JOIN "message" ON "user"."id" = "message"."user_id"
+                      INNER JOIN (
+                         SELECT "user_id", MAX("created_at_timestamp") "max_timestamp"
+                         FROM "message"
+                         GROUP BY "user_id"
+                      ) AS "timestamp" ON "timestamp"."max_timestamp" = "message"."created_at_timestamp"
+                      ORDER BY "status_number";`;
+    pool.query(queryText)
+        .then((result) => {
+            res.send(result.rows);
         }).catch((error) => {
             res.sendStatus(500);
         });
