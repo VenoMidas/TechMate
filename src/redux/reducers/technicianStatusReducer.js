@@ -7,5 +7,6 @@ const technicianStatusReducer = (state = [], action) => {
     };
 };
 
-
+// techStatus will be on the redux state at:
+// state.techStatus
 export default technicianStatusReducer;

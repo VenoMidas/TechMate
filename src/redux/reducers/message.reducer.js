@@ -7,6 +7,6 @@ const messageStatusReducer = (state = {}, action) => {
     };
 };
 
-// user will be on the redux state at:
-// state.user
+// status will be on the redux state at:
+// state.status
 export default messageStatusReducer;
