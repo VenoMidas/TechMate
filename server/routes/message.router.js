@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
         let queryText = `SELECT * FROM "message" WHERE "user_id" = $1 ORDER BY "created_at_timestamp" DESC LIMIT 1;`;
         pool.query(queryText, [req.params.id])
             .then((result) => {
-                console.log(result.rows[0])
+                // console.log(result.rows[0])
                 res.send(result.rows[0]);
             }).catch((error) => {
                 res.sendStatus(500);
