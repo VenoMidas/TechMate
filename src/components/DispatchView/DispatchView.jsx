@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 
 function DispatchView() {
