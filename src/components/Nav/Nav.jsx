@@ -31,8 +31,6 @@ function Nav() {
             <Link className="navLink" to="/profile">
               Profile
             </Link>
-
-            <LogOutButton className="navLink" />
           </>
         )}
 
@@ -43,21 +41,34 @@ function Nav() {
               Home
             </Link>
 
-            <Link className="navLink" to="/profile">
-              Profile
-            </Link>
-
             <Link className="navLink" to="/all/users">
               All Users Page
             </Link>
 
-            <LogOutButton className="navLink" />
+            <Link className="navLink" to="/profile">
+              Profile
+            </Link>
           </>
         )}
 
         <Link className="navLink" to="/about">
           About
         </Link>
+
+        {/* If a user is logged in as technician, show these links */}
+        {user.position === "Technician" && (
+          <>
+            <LogOutButton className="navLink" />
+          </>
+        )}
+
+        {/* If a user is logged in as dispatcher, show these links */}
+        {user.position === "Dispatcher" && (
+          <>
+            <LogOutButton className="navLink" />
+          </>
+        )}
+
       </div>
     </div>
   );
