@@ -48,7 +48,8 @@ Before you get started, make sure you have the following software installed on y
   ```
   
   While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to     keep your application secure. Here's a site that can help you: [https://passwordsgenerators.net/](https://passwordsgenerators.net/). If you don't do     this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-5. Start postgrew if it is not already running
+  
+5. Start postgres if it is not already running
 6. run `npm run server` in your terminal. (Default port is 5000, if port is in use modify `server.js` port variable.)
 7. run `npm run client` in a new terminal - this will launch the app in the browser.
 8. Navigate to `localhost:3000`
