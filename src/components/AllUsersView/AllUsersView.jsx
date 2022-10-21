@@ -40,7 +40,7 @@ function AllUsersView() {
 
     return (
         <div className="container">
-            <h2>Welcome to the all users page, {user.username}!</h2>
+            <h2>All Users</h2>
             <Box sx={{ width: '75%', margin: 'auto' }}>
                 <Stack spacing={2}>
                     {
