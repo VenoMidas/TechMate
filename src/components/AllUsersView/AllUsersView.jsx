@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+// MUI Imports
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 
 function AllUsersView() {
     const user = useSelector((store) => store.user);
@@ -11,7 +17,7 @@ function AllUsersView() {
     }, []);
 
     const getAllUsers = () => {
-        console.log('In getAllUsers');
+        // console.log('In getAllUsers');
         axios.get('/api/user/all')
             .then((response) => {
                 setAllUsers(response.data);
@@ -34,22 +40,32 @@ function AllUsersView() {
 
     return (
         <div className="container">
-            <h2>Welcome to the all users page, {user.username}!</h2>
-            {
-                allUsers.map(user => {
-                    return (
-                        <ul key={user.id}>
-                            <li>{user.first_name}</li>
-                            <li>{user.last_name}</li>
-                            <li>{user.classification}</li>
-                            <li>{user.position}</li>
-                            <div>
-                                <button onClick={() => deleteUser(user.id)}>Delete</button>
-                            </div>
-                        </ul>
-                    );
-                })
-            }
+            <h2>All Users</h2>
+            <Box sx={{ width: '75%', margin: 'auto' }}>
+                <Stack spacing={2}>
+                    {
+                        allUsers.map(user => {
+
+                            const Item = styled(Paper)(({ theme }) => ({
+                                backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+                                ...theme.typography.body1,
+                                padding: theme.spacing(1),
+                                textAlign: 'center',
+                                color: theme.palette.text.secondary,
+                            }));
+
+                            return (
+                                <Item key={user.id}>{user.username}
+                                    <br />{user.first_name} {user.last_name}
+                                    <br />{user.classification}
+                                    <br />{user.position}
+                                    <br /><Button color="error" variant="outlined" onClick={() => deleteUser(user.id)}>Delete</Button>
+                                </Item>
+                            );
+                        })
+                    }
+                </Stack>
+            </Box>
         </div>
     );
 };

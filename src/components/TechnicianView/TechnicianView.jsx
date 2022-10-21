@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+// MUI imports
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
 
 function TechnicianView() {
     const user = useSelector((store) => store.user);
@@ -8,9 +13,7 @@ function TechnicianView() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(status)
         dispatch({ type: 'FETCH_STATUS', payload: user.id });
-        console.log(status)
     }, []);
 
     const postTechnicianStatus = (number, message) => {
@@ -24,14 +27,41 @@ function TechnicianView() {
             });
     };
 
+    const ItemOne = styled(Paper)(({ theme }) => ({
+        backgroundColor: status.status_number === 1 ? 'green' : '#fff',
+        ...theme.typography.body1,
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    }));
+    const ItemTwo = styled(Paper)(({ theme }) => ({
+        backgroundColor: status.status_number === 2 ? 'goldenrod' : '#fff',
+        ...theme.typography.body1,
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    }));
+    const ItemThree = styled(Paper)(({ theme }) => ({
+        backgroundColor: status.status_number === 3 ? 'red' : '#fff',
+        ...theme.typography.body1,
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    }));
+
     return (
         <div className="container">
-            <h2>Welcome to the technician page, {user.username}!</h2>
-            <p>Your status is: {status.details}</p>
-            <p>Your position is: {user.position}</p>
-            <div onClick={() => postTechnicianStatus(1, 'Open for work!')} className="statusItem green">Status 1 - Open for work!</div>
-            <div onClick={() => postTechnicianStatus(2, 'On break!')} className="statusItem yellow">Status 2 - On break!</div>
-            <div onClick={() => postTechnicianStatus(3, 'Working!')} className="statusItem red">Status 3 - Working</div>
+
+            <h2>{user.username}, update your status below</h2>
+
+            <Box sx={{ width: '75%', margin: 'auto' }}>
+                <Stack spacing={2}>
+                    <ItemOne onClick={() => postTechnicianStatus(1, 'Open for work!')} className='green' >Open for work!</ItemOne>
+                    <ItemTwo onClick={() => postTechnicianStatus(2, 'On break!')} className='yellow' >On Break!</ItemTwo>
+                    <ItemThree onClick={() => postTechnicianStatus(3, 'Working!')} className='red' >Working!</ItemThree>
+                </Stack>
+            </Box>
+
         </div>
     );
 };
