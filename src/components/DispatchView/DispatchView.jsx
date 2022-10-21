@@ -57,10 +57,3 @@ function DispatchView() {
 
 // this allows us to use <App /> in index.js
 export default DispatchView;
-
-
-{/* 
-    <ItemOne onClick={() => postTechnicianStatus(1, 'Open for work!')} className='green' >Open for work!</ItemOne>
-    <ItemTwo onClick={() => postTechnicianStatus(2, 'On break!')} className='yellow' >On Break!</ItemTwo>
-    <ItemThree onClick={() => postTechnicianStatus(3, 'Working!')} className='red' >Working!</ItemThree>
- */}
