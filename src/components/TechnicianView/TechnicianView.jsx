@@ -13,9 +13,7 @@ function TechnicianView() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(status)
         dispatch({ type: 'FETCH_STATUS', payload: user.id });
-        console.log(status)
     }, []);
 
     const postTechnicianStatus = (number, message) => {

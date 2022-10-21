@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+// MUI Imports
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
 
 function DispatchView() {
     const user = useSelector((store) => store.user);
@@ -10,26 +15,52 @@ function DispatchView() {
         dispatch({ type: 'FETCH_TECH_STATUS' });
     }, []);
 
+    const checkStatusNumber = (techStatus) => {
+        switch (techStatus) {
+            case 1:
+                return 'green';
+            case 2:
+                return 'goldenrod';
+            case 3:
+                return 'red';
+            default:
+                return '#fff';
+        };
+    };
+
     return (
         <div className="container">
-            <h2>Welcome to the dispatch page, {user.username}!</h2>
-            <p>Your ID is: {user.id}</p>
-            <p>Your position is: {user.position}</p>
-            {
-                techStatus.map(tech => {
-                    return (
-                        <ul key={tech.id} >
-                            <li>{tech.first_name}</li>
-                            <li>{tech.last_name}</li>
-                            <li>{tech.classification}</li>
-                            <li>{tech.details}</li>
-                        </ul>
-                    )
-                })
-            }
+            <h2>{user.username}, signed in as Dispatch</h2>
+            <Box sx={{ width: '75%', margin: 'auto' }}>
+                <Stack spacing={2}>
+                    {
+                        techStatus.map(tech => {
+
+                            const Item = styled(Paper)(({ theme }) => ({
+                                backgroundColor: checkStatusNumber(tech.status_number),
+                                ...theme.typography.body1,
+                                padding: theme.spacing(1),
+                                textAlign: 'center',
+                                color: theme.palette.text.secondary,
+                            }));
+
+                            return (
+                                <Item key={tech.id} > {tech.first_name} {tech.last_name}<br />{tech.classification}<br />{tech.details} </Item>
+                            )
+                        })
+                    }
+                </Stack>
+            </Box>
         </div>
     );
 };
 
 // this allows us to use <App /> in index.js
 export default DispatchView;
+
+
+{/* 
+    <ItemOne onClick={() => postTechnicianStatus(1, 'Open for work!')} className='green' >Open for work!</ItemOne>
+    <ItemTwo onClick={() => postTechnicianStatus(2, 'On break!')} className='yellow' >On Break!</ItemTwo>
+    <ItemThree onClick={() => postTechnicianStatus(3, 'Working!')} className='red' >Working!</ItemThree>
+ */}
