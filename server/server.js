@@ -4,6 +4,17 @@ require('dotenv').config();
 
 const app = express();
 
+// socket.io
+const server = require('http').Server(app);
+const io = require('socket.io')(server, {
+  cors: {
+    origin: ['http://localhost:3000']
+  }
+});
+io.on('connection', socket => {
+  console.log(socket.id);
+});
+
 const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
 
@@ -33,6 +44,12 @@ app.use(express.static('build'));
 const PORT = process.env.PORT || 5000;
 
 /** Listen * */
-app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`);
+
+// app.listen(PORT, () => {
+//   console.log(`Listening on port: ${PORT}`);
+// });
+
+// socket.io server 
+server.listen(PORT, () => {
+  console.log(`Server listening on port: ${PORT}`);
 });
