@@ -7,7 +7,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 
-function TechnicianView() {
+function TechnicianView({ socket }) {
     const user = useSelector((store) => store.user);
     const status = useSelector((store) => store.status)
     const dispatch = useDispatch();
@@ -21,6 +21,7 @@ function TechnicianView() {
         axios.post(`/api/message/${user.id}`, { status_number: number, details: message })
             .then(() => {
                 dispatch({ type: 'FETCH_STATUS', payload: user.id });
+                socket.emit('update dispatch', 'update');
             }).catch((error) => {
                 console.log(error);
                 alert('Something went wrong!');

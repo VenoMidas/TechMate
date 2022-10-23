@@ -6,6 +6,8 @@ import {
   Switch,
 } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+// socket.io 
+import { io } from 'socket.io-client';
 // Component Imports
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -23,6 +25,9 @@ import Container from '@mui/material/Container';
 
 function App() {
   const dispatch = useDispatch();
+
+  // socket.io
+  const socket = io("http://localhost:5000");
 
   const user = useSelector(store => store.user);
 
@@ -59,10 +64,10 @@ function App() {
             >
               {user.position === "Technician" ?
                 // if user is a technician - display technician landing page
-                <TechnicianView />
+                <TechnicianView socket={socket} />
                 :
                 // Otherwise, show the dispatch landing page
-                <DispatchView />
+                <DispatchView socket={socket} />
               }
             </ProtectedRoute>
 
