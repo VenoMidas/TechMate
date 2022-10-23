@@ -13,6 +13,10 @@ const io = require('socket.io')(server, {
 });
 io.on('connection', socket => {
   console.log(socket.id);
+  socket.on('update dispatch', (string) => {
+    console.log(string);
+    io.emit('update', string);
+  });
 });
 
 const sessionMiddleware = require('./modules/session-middleware');

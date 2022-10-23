@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 
-function DispatchView() {
+function DispatchView({ socket }) {
     const user = useSelector((store) => store.user);
     const techStatus = useSelector((store) => store.techStatus)
     const dispatch = useDispatch();
@@ -14,6 +14,10 @@ function DispatchView() {
     useEffect(() => {
         dispatch({ type: 'FETCH_TECH_STATUS' });
     }, []);
+
+    socket.on('update', () => {
+        dispatch({ type: 'FETCH_TECH_STATUS' });
+    });
 
     const checkStatusNumber = (techStatus) => {
         switch (techStatus) {

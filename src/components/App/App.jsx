@@ -64,10 +64,10 @@ function App() {
             >
               {user.position === "Technician" ?
                 // if user is a technician - display technician landing page
-                <TechnicianView />
+                <TechnicianView socket={socket} />
                 :
                 // Otherwise, show the dispatch landing page
-                <DispatchView />
+                <DispatchView socket={socket} />
               }
             </ProtectedRoute>
 
