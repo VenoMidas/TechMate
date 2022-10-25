@@ -11,31 +11,19 @@ function AboutPage() {
       <div>
 
         <h2>Technologies Used</h2>
-        <ul>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>Javascript</li>
-          <li>Material UI</li>
-          <li>React</li>
-          <li>Redux and Redux-Saga</li>
-          <li>Node.js</li>
-          <li>Express.js</li>
-          <li>PostgreSQL</li>
-        </ul>
-
-        <h2>Progression</h2>
-        <ol>
-          <li>Ability for users to modify the status details</li>
-          <li>A unique status available for admin to set as technician status</li>
-          <li>Ability for admin to edit details of the unique status</li>
-          <li>Socket.io for instant updating of technician status</li>
-          <li>Ability to sort technicians and admin into teams</li>
-          <li>Data tracking and analytics to improve process and workflow</li>
-        </ol>
+          <p>HTML</p>
+          <p>CSS</p>
+          <p>Javascript</p>
+          <p>Material UI</p>
+          <p>React</p>
+          <p>Redux and Redux-Saga</p>
+          <p>Node.js</p>
+          <p>Express.js</p>
+          <p>PostgreSQL</p>
 
         <h2>Reflections</h2>
-        <p>The hardest part was balancing the beginning job searching, solo project, and life in general.</p>
-        <p>I'm proud of myself for maintaining calm and not allowing "perfect" to be the enemy of "good."</p>
+        <p>The toughest challenge was learning and implementing socket.io.</p>
+        <p>Now that socket.io is running, I'm excited to add 2-way status changes like the dispatcher flagging "work is on the way."</p>
 
         <h2>Acknowledgement</h2>
         <p>My partner Emily for managing our little monster Olivia on nights and weekends.</p>
