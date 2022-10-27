@@ -5,6 +5,13 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
+import avatar from '../../images/dealership.jpg'
 
 function DispatchView({ socket }) {
     const user = useSelector((store) => store.user);
@@ -34,8 +41,23 @@ function DispatchView({ socket }) {
 
     return (
         <div className="container">
-            <h1>Farhampton Motors</h1>
-            <h2>Dispatch</h2>
+            <List
+                sx={{
+                    width: '100%',
+                    maxWidth: 360,
+                    bgcolor: '#eee',
+                    margin: '20px auto',
+                }}
+            >
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar src={avatar} />
+                    </ListItemAvatar>
+                    <ListItemText primary="Farhampton Motors" secondary="Dispatch" />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+            </List>
+
             <Box sx={{ width: '50%', margin: 'auto' }}>
                 <Stack spacing={2}>
                     {

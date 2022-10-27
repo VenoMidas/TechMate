@@ -38,7 +38,7 @@ function RegisterForm() {
       <Card>
         <CardContent sx={{ textAlign: 'center' }}>
           <form onSubmit={registerUser}>
-            <h2>Register User</h2>
+            <h2>Register</h2>
             {errors.registrationMessage && (
               <h3 className="alert" role="alert">
                 {errors.registrationMessage}
