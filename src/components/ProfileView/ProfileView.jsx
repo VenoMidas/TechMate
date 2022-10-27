@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 // MUI imports
 import TextField from '@mui/material/TextField'; // import TextField element from MUI
@@ -15,20 +16,27 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import technicianAvatar from '../../images/technician.jpg'
 import businessAvatar from '../../images/dealership.jpg'
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 function ProfileView() {
     const user = useSelector((store) => store.user);
     const [firstName, setFirstName] = useState(user.first_name);
     const [lastName, setLastName] = useState(user.last_name);
     const [classification, setClassification] = useState(user.classification);
-    const dispatch = useDispatch();
+    const [alertStatus, setAlertStatus] = useState(false);
+    const history = useHistory();
 
     const updateProfile = (event) => {
         event.preventDefault();
         console.log('In updateProfile');
         axios.put(`/api/user/${user.id}`, { first_name: firstName, last_name: lastName, classification: classification })
             .then(() => {
-                dispatch({ type: 'FETCH_USER' });
+                // history.push('/home');
+                setAlertStatus(true);
             }).catch((error) => {
                 console.log(error);
                 alert('Something went wrong!');
@@ -37,6 +45,25 @@ function ProfileView() {
 
     return (
         <div className="container">
+
+            <Dialog
+                open={alertStatus}
+                onClose={() => history.push('/home')}
+            >
+                <DialogTitle >
+                    Your profile has been updated!
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText >
+                        Close this window to return home.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button variant="contained" color="success" onClick={() => history.push('/home')} autoFocus>
+                        Home
+                    </Button>
+                </DialogActions>
+            </Dialog>
 
             <List
                 sx={{
