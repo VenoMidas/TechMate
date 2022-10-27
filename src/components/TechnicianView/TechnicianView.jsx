@@ -6,6 +6,13 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
+import technicianAvatar from '../../images/headshot.png'
 
 function TechnicianView({ socket }) {
     const user = useSelector((store) => store.user);
@@ -68,8 +75,22 @@ function TechnicianView({ socket }) {
     return (
         <div className="container">
 
-            <h1>{user.first_name} {user.last_name}</h1>
-            <h2>Status</h2>
+            <List
+                sx={{
+                    width: '100%',
+                    maxWidth: 360,
+                    bgcolor: '#eee',
+                    margin: '20px auto',
+                }}
+            >
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar src={technicianAvatar} />
+                    </ListItemAvatar>
+                    <ListItemText primary={user.first_name + ' ' + user.last_name} secondary="Status" />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+            </List>
 
             <Box sx={{ width: '50%', margin: 'auto' }}>
                 <Stack spacing={2}>

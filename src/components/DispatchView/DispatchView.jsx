@@ -11,7 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
-import avatar from '../../images/dealership.jpg'
+import businessAvatar from '../../images/dealership.jpg'
 
 function DispatchView({ socket }) {
     const user = useSelector((store) => store.user);
@@ -51,7 +51,7 @@ function DispatchView({ socket }) {
             >
                 <ListItem>
                     <ListItemAvatar>
-                        <Avatar src={avatar} />
+                        <Avatar src={businessAvatar} />
                     </ListItemAvatar>
                     <ListItemText primary="Farhampton Motors" secondary="Dispatch" />
                 </ListItem>
