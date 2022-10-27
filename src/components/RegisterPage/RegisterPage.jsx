@@ -9,7 +9,7 @@ function RegisterPage() {
   return (
     <div>
       <RegisterForm />
-
+      <br />
       <center>
         <button
           type="button"
