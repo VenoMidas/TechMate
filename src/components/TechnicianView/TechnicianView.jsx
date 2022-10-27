@@ -73,23 +73,23 @@ function TechnicianView({ socket }) {
     }));
 
     const ItemFour = styled(Paper)(({ theme }) => ({
-        backgroundImage: status.status_number === 4 ? 'radial-gradient(#fff 40%, #bbb)' : '#fff',
+        backgroundImage: status.status_number === 4 ? 'radial-gradient(#fff 40%, #9898d2)' : '#fff',
         padding: theme.spacing(1),
         textAlign: 'center',
         color: theme.palette.text.primary,
         fontWeight: status.status_number === 4 ? 'bold' : 'normal',
-        border: '1px solid #bbb',
+        border: '1px solid #9898d2',
         cursor: 'pointer',
         padding: '20px',
     }));
 
     const ItemFive = styled(Paper)(({ theme }) => ({
-        backgroundImage: status.status_number === 5 ? 'radial-gradient(#fff 40%, #666)' : '#fff',
+        backgroundImage: status.status_number === 5 ? 'radial-gradient(#fff 40%, #bbb)' : '#fff',
         padding: theme.spacing(1),
         textAlign: 'center',
         color: theme.palette.text.primary,
         fontWeight: status.status_number === 5 ? 'bold' : 'normal',
-        border: '1px solid #666',
+        border: '1px solid #bbb',
         cursor: 'pointer',
         padding: '20px',
     }));
@@ -99,8 +99,7 @@ function TechnicianView({ socket }) {
 
             <List
                 sx={{
-                    width: '100%',
-                    maxWidth: 360,
+                    width: '60%',
                     bgcolor: '#eee',
                     margin: '20px auto',
                 }}
@@ -114,7 +113,7 @@ function TechnicianView({ socket }) {
                 <Divider variant="inset" component="li" />
             </List>
 
-            <Box sx={{ width: '50%', margin: 'auto' }}>
+            <Box sx={{ width: '70%', margin: 'auto' }}>
                 <Stack spacing={2}>
                     <ItemOne onClick={() => postTechnicianStatus(1, 'Open for work!')} >Open for work!</ItemOne>
                     <ItemTwo onClick={() => postTechnicianStatus(2, 'On break!')} >On Break!</ItemTwo>

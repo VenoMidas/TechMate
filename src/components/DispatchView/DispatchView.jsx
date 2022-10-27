@@ -35,9 +35,9 @@ function DispatchView({ socket }) {
             case 3:
                 return 'linear-gradient(to bottom right, rgba(255,97,97,1), rgba(255,97,97,0))';
             case 4:
-                return 'linear-gradient(to bottom right, rgba(187,187,187,1), rgba(255,97,97,0))';
+                return 'linear-gradient(to bottom right, rgba(152,152,210,1), rgba(152,152,210,0))';
             case 5:
-                return 'linear-gradient(to bottom right, rgba(102,102,102,1), rgba(255,97,97,0))';
+                return 'linear-gradient(to bottom right, rgba(187,187,187,1), rgba(187,187,187,0))';
             default:
                 return 'linear-gradient(to bottom right, rgba(255,0,0,1), rgba(255,0,0,1))';
         };
@@ -47,8 +47,7 @@ function DispatchView({ socket }) {
         <div className="container">
             <List
                 sx={{
-                    width: '100%',
-                    maxWidth: 360,
+                    width: '60%',
                     bgcolor: '#eee',
                     margin: '20px auto',
                 }}
@@ -62,7 +61,7 @@ function DispatchView({ socket }) {
                 <Divider variant="inset" component="li" />
             </List>
 
-            <Box sx={{ width: '50%', margin: 'auto' }}>
+            <Box sx={{ width: '70%', margin: 'auto' }}>
                 <Stack spacing={2}>
                     {
                         techStatus.map(tech => {
