@@ -34,6 +34,10 @@ function DispatchView({ socket }) {
                 return 'linear-gradient(to bottom right, rgba(214,175,0,1), rgba(214,175,0,0))';
             case 3:
                 return 'linear-gradient(to bottom right, rgba(255,97,97,1), rgba(255,97,97,0))';
+            case 4:
+                return 'linear-gradient(to bottom right, rgba(187,187,187,1), rgba(255,97,97,0))';
+            case 5:
+                return 'linear-gradient(to bottom right, rgba(102,102,102,1), rgba(255,97,97,0))';
             default:
                 return 'linear-gradient(to bottom right, rgba(255,0,0,1), rgba(255,0,0,1))';
         };
