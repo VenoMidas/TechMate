@@ -17,6 +17,10 @@ io.on('connection', socket => {
     console.log(string);
     io.emit('update', string);
   });
+  socket.on('update technician', (string) => {
+    console.log(string),
+    io.emit('update technician', string);
+  });
 });
 
 const sessionMiddleware = require('./modules/session-middleware');
