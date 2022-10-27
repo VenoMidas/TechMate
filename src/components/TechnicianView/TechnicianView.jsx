@@ -23,6 +23,10 @@ function TechnicianView({ socket }) {
         dispatch({ type: 'FETCH_STATUS', payload: user.id });
     }, []);
 
+    socket.on('update technician', () => {
+        dispatch({ type: 'FETCH_STATUS', payload: user.id });
+    });
+
     const postTechnicianStatus = (number, message) => {
         console.log('in postTechnicianStatus');
         axios.post(`/api/message/${user.id}`, { status_number: number, details: message })

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 // MUI Imports
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -25,6 +26,18 @@ function DispatchView({ socket }) {
     socket.on('update', () => {
         dispatch({ type: 'FETCH_TECH_STATUS' });
     });
+
+    const updateTechStatus = (id, number, message) => {
+        // console.log('In dispatch updateTechStatus', id);
+        axios.post(`/api/message/${id}`, { status_number: number, details: message })
+            .then(() => {
+                dispatch({ type: 'FETCH_TECH_STATUS' });
+                socket.emit('update technician', 'update tech');
+            }).catch((error) => {
+                console.log(error);
+                alert('Something went wrong!');
+            });
+    };
 
     const checkStatusNumberGradient = (techStatus) => {
         switch (techStatus) {
@@ -72,10 +85,11 @@ function DispatchView({ socket }) {
                                 padding: theme.spacing(1),
                                 textAlign: 'left',
                                 color: '#000',
+                                cursor: 'pointer',
                             }));
 
                             return (
-                                <Item key={tech.id} > <strong>{tech.first_name} {tech.last_name}</strong> - {tech.classification}<br />{tech.details} </Item>
+                                <Item key={tech.id} onClick={() => updateTechStatus(tech.user_id, 4, 'Work dispatched!')} > <strong>{tech.first_name} {tech.last_name}</strong> - {tech.classification}<br />{tech.details} </Item>
                             )
                         })
                     }
