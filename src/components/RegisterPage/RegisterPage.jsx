@@ -9,11 +9,11 @@ function RegisterPage() {
   return (
     <div>
       <RegisterForm />
-
+      <br />
       <center>
         <button
           type="button"
-          className="btn btn_asLink"
+          className="btn btn_asLink fontSizeLoginRegister"
           onClick={() => {
             history.push('/login');
           }}

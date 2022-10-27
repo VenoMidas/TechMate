@@ -2,15 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 // MUI Imports
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
+import technicianAvatar from '../../images/technician.jpg'
+import businessAvatar from '../../images/dealership.jpg'
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 function AllUsersView() {
     const user = useSelector((store) => store.user);
     const [allUsers, setAllUsers] = useState([])
+    const [alertStatus, setAlertStatus] = useState(false);
+    const [userToDelete, setUserToDelete] = useState(0);
 
     useEffect(() => {
         getAllUsers();
@@ -31,6 +42,7 @@ function AllUsersView() {
         console.log('In deleteUser');
         axios.delete(`/api/user/${userId}`)
             .then(() => {
+                setAlertStatus(false);
                 getAllUsers();
             }).catch((error) => {
                 console.log(error);
@@ -38,34 +50,78 @@ function AllUsersView() {
             });
     };
 
+    const updateAlert = (userId) => {
+        setUserToDelete(userId);
+        setAlertStatus(true);
+    };
+
     return (
         <div className="container">
-            <h2>All Users</h2>
-            <Box sx={{ width: '75%', margin: 'auto' }}>
-                <Stack spacing={2}>
-                    {
-                        allUsers.map(user => {
 
-                            const Item = styled(Paper)(({ theme }) => ({
-                                backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-                                ...theme.typography.body1,
-                                padding: theme.spacing(1),
-                                textAlign: 'center',
-                                color: theme.palette.text.secondary,
-                            }));
+            <Dialog
+                open={alertStatus}
+                onClose={() => setAlertStatus(false)}
+            >
+                <DialogTitle >
+                    Are you sure you want to delete this user?
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText >
+                        This CANNOT be undone!
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button variant="contained" color="error" onClick={() => deleteUser(userToDelete)} autoFocus>
+                        DELETE
+                    </Button>
+                </DialogActions>
+            </Dialog>
 
-                            return (
-                                <Item key={user.id}>{user.username}
-                                    <br />{user.first_name} {user.last_name}
-                                    <br />{user.classification}
-                                    <br />{user.position}
-                                    <br /><Button color="error" variant="outlined" onClick={() => deleteUser(user.id)}>Delete</Button>
-                                </Item>
-                            );
-                        })
-                    }
-                </Stack>
-            </Box>
+            <List
+                sx={{
+                    width: '100%',
+                    maxWidth: 360,
+                    bgcolor: '#eee',
+                    margin: '20px auto',
+                }}
+            >
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar src={businessAvatar} />
+                    </ListItemAvatar>
+                    <ListItemText primary="Farhampton Motors" secondary="All Users" />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+            </List>
+
+            <List
+                sx={{
+                    width: '100%',
+                    maxWidth: 500,
+                    bgcolor: '#eee',
+                    margin: '20px auto',
+                }}
+            >
+                {
+                    allUsers.map(user => {
+
+
+
+                        return (
+                            <>
+                                <ListItem>
+                                    <ListItemAvatar>
+                                        <Avatar src={user.position === 'Technician' ? technicianAvatar : businessAvatar} />
+                                    </ListItemAvatar>
+                                    <ListItemText primary={user.first_name + ' ' + user.last_name} secondary={user.classification} />
+                                    <Button color="error" variant="outlined" onClick={() => updateAlert(user.id)}>Delete</Button>
+                                </ListItem>
+                                <Divider variant="inset" component="li" />
+                            </>
+                        )
+                    })
+                }
+            </List>
         </div>
     );
 };
