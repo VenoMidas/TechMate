@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 // MUI Imports
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
+import technicianAvatar from '../../images/technician.jpg'
+import businessAvatar from '../../images/dealership.jpg'
 
 function AllUsersView() {
     const user = useSelector((store) => store.user);
@@ -40,32 +44,48 @@ function AllUsersView() {
 
     return (
         <div className="container">
-            <h2>All Users</h2>
-            <Box sx={{ width: '25%', margin: 'auto' }}>
-                <Stack spacing={2}>
-                    {
-                        allUsers.map(user => {
+           <List
+                sx={{
+                    width: '100%',
+                    maxWidth: 360,
+                    bgcolor: '#eee',
+                    margin: '20px auto',
+                }}
+            >
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar src={businessAvatar} />
+                    </ListItemAvatar>
+                    <ListItemText primary="Farhampton Motors" secondary="All Users" />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+            </List>
 
-                            const Item = styled(Paper)(({ theme }) => ({
-                                backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-                                ...theme.typography.body1,
-                                padding: theme.spacing(1),
-                                textAlign: 'left',
-                                color: theme.palette.text.secondary,
-                            }));
-
-                            return (
-                                <Item key={user.id}>Username: {user.username}
-                                    <br />Name: {user.first_name} {user.last_name}
-                                    <br />Classification: {user.classification}
-                                    <br />Position: {user.position}
-                                    <br /><Button color="error" variant="outlined" onClick={() => deleteUser(user.id)}>Delete</Button>
-                                </Item>
-                            );
-                        })
-                    }
-                </Stack>
-            </Box>
+            <List
+                sx={{
+                    width: '100%',
+                    maxWidth: 500,
+                    bgcolor: '#eee',
+                    margin: '20px auto',
+                }}
+            >
+                {
+                    allUsers.map(user => {
+                        return (
+                            <>
+                                <ListItem>
+                                    <ListItemAvatar>
+                                        <Avatar src={user.position === 'Technician' ? technicianAvatar : businessAvatar} />
+                                    </ListItemAvatar>
+                                    <ListItemText primary={user.first_name + ' ' + user.last_name} secondary={user.classification} />
+                                    <Button color="error" variant="outlined" onClick={() => deleteUser(user.id)}>Delete</Button>
+                                </ListItem>
+                                <Divider variant="inset" component="li" />
+                            </>
+                        )
+                    })
+                }
+            </List>
         </div>
     );
 };

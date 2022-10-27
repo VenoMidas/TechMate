@@ -12,7 +12,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
-import technicianAvatar from '../../images/headshot.png'
+import technicianAvatar from '../../images/technician.jpg'
 
 function TechnicianView({ socket }) {
     const user = useSelector((store) => store.user);
