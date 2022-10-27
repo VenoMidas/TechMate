@@ -41,7 +41,7 @@ function AllUsersView() {
     return (
         <div className="container">
             <h2>All Users</h2>
-            <Box sx={{ width: '75%', margin: 'auto' }}>
+            <Box sx={{ width: '25%', margin: 'auto' }}>
                 <Stack spacing={2}>
                     {
                         allUsers.map(user => {
@@ -50,15 +50,15 @@ function AllUsersView() {
                                 backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                                 ...theme.typography.body1,
                                 padding: theme.spacing(1),
-                                textAlign: 'center',
+                                textAlign: 'left',
                                 color: theme.palette.text.secondary,
                             }));
 
                             return (
-                                <Item key={user.id}>{user.username}
-                                    <br />{user.first_name} {user.last_name}
-                                    <br />{user.classification}
-                                    <br />{user.position}
+                                <Item key={user.id}>Username: {user.username}
+                                    <br />Name: {user.first_name} {user.last_name}
+                                    <br />Classification: {user.classification}
+                                    <br />Position: {user.position}
                                     <br /><Button color="error" variant="outlined" onClick={() => deleteUser(user.id)}>Delete</Button>
                                 </Item>
                             );

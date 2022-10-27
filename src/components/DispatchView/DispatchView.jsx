@@ -19,37 +19,38 @@ function DispatchView({ socket }) {
         dispatch({ type: 'FETCH_TECH_STATUS' });
     });
 
-    const checkStatusNumber = (techStatus) => {
+    const checkStatusNumberGradient = (techStatus) => {
         switch (techStatus) {
             case 1:
-                return 'green';
+                return 'linear-gradient(to bottom right, rgba(0,174,0,1), rgba(0,174,0,0))';
             case 2:
-                return 'goldenrod';
+                return 'linear-gradient(to bottom right, rgba(214,175,0,1), rgba(214,175,0,0))';
             case 3:
-                return 'red';
+                return 'linear-gradient(to bottom right, rgba(255,97,97,1), rgba(255,97,97,0))';
             default:
-                return '#fff';
+                return 'linear-gradient(to bottom right, rgba(255,0,0,1), rgba(255,0,0,1))';
         };
     };
 
     return (
         <div className="container">
-            <h2>{user.username}, signed in as Dispatch</h2>
-            <Box sx={{ width: '75%', margin: 'auto' }}>
+            <h1>Farhampton Motors</h1>
+            <h2>Dispatch</h2>
+            <Box sx={{ width: '50%', margin: 'auto' }}>
                 <Stack spacing={2}>
                     {
                         techStatus.map(tech => {
 
                             const Item = styled(Paper)(({ theme }) => ({
-                                backgroundColor: checkStatusNumber(tech.status_number),
+                                backgroundImage: checkStatusNumberGradient(tech.status_number),
                                 ...theme.typography.body1,
                                 padding: theme.spacing(1),
-                                textAlign: 'center',
-                                color: theme.palette.text.secondary,
+                                textAlign: 'left',
+                                color: '#000',
                             }));
 
                             return (
-                                <Item key={tech.id} > {tech.first_name} {tech.last_name}<br />{tech.classification}<br />{tech.details} </Item>
+                                <Item key={tech.id} > <strong>{tech.first_name} {tech.last_name}</strong> - {tech.classification}<br />{tech.details} </Item>
                             )
                         })
                     }

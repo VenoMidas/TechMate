@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+// MUI imports
+import TextField from '@mui/material/TextField'; // import TextField element from MUI
+import Button from '@mui/material/Button'; // import Button element from MUI
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 function ProfileView() {
     const user = useSelector((store) => store.user);
@@ -23,46 +29,27 @@ function ProfileView() {
 
     return (
         <div className="container">
-            <h2>Welcome to the profile page, {user.username}!</h2>
-            <p>Position: {user.position}</p>
-            <form onSubmit={updateProfile}>
-                <div>
-                    <label htmlFor="first_name">
-                        First Name:
-                        <input
-                            type="text"
-                            name="first_name"
-                            value={firstName}
-                            onChange={(event) => setFirstName(event.target.value)}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label htmlFor="last_name">
-                        Last Name:
-                        <input
-                            type="text"
-                            name="last_name"
-                            value={lastName}
-                            onChange={(event) => setLastName(event.target.value)}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <label htmlFor="classification">
-                        Classification:
-                        <input
-                            type="text"
-                            name="classification"
-                            value={classification}
-                            onChange={(event) => setClassification(event.target.value)}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <input type="submit" />
-                </div>
-            </form>
+
+            <h1>Profile</h1>
+
+            <Box sx={{ width: '35%', margin: 'auto' }}>
+                <Card>
+                    <CardContent>
+                        <form onSubmit={updateProfile}>
+
+                            <TextField fullWidth label="First Name:" value={firstName} onChange={(event) => setFirstName(event.target.value)} variant="standard" margin="dense" />
+                            <br />
+                            <TextField fullWidth label="Last Name:" value={lastName} onChange={(event) => setLastName(event.target.value)} variant="standard" margin="dense" />
+                            <br />
+                            <TextField fullWidth label="Classification:" value={classification} onChange={(event) => setClassification(event.target.value)} variant="standard" margin="dense" />
+                            <br />
+                            <br />
+                            <Button color="success" variant="contained" type='submit'>Submit</Button>
+                        </form>
+                    </CardContent>
+                </Card>
+            </Box>
+
         </div>
     );
 };

@@ -66,6 +66,7 @@ function RegisterForm() {
           </select>
         </label>
       </div>
+      <br />
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>

@@ -42,7 +42,7 @@ function Nav() {
             </Link>
 
             <Link className="navLink" to="/all/users">
-              All Users Page
+              All Users
             </Link>
 
             <Link className="navLink" to="/profile">
