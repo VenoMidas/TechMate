@@ -7,6 +7,14 @@ import Button from '@mui/material/Button'; // import Button element from MUI
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
+import technicianAvatar from '../../images/headshot.png'
+import businessAvatar from '../../images/dealership.jpg'
 
 function ProfileView() {
     const user = useSelector((store) => store.user);
@@ -30,7 +38,22 @@ function ProfileView() {
     return (
         <div className="container">
 
-            <h1>Profile</h1>
+            <List
+                sx={{
+                    width: '100%',
+                    maxWidth: 360,
+                    bgcolor: '#eee',
+                    margin: '20px auto',
+                }}
+            >
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar src={user.position === 'Technician' ? technicianAvatar : businessAvatar} />
+                    </ListItemAvatar>
+                    <ListItemText primary={user.first_name + ' ' + user.last_name} secondary="Profile" />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+            </List>
 
             <Box sx={{ width: '35%', margin: 'auto' }}>
                 <Card>
