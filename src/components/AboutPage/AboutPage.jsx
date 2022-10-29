@@ -23,7 +23,7 @@ function AboutPage() {
 
         <h2>Reflections</h2>
         <p>The toughest challenge was learning and implementing socket.io.</p>
-        <p>Now that socket.io is running, I'm excited to add 2-way status changes like the dispatcher flagging "work is on the way."</p>
+        <p>Next I'm excited to add the ability for users to edit the status messages</p>
 
         <h2>Acknowledgement</h2>
         <p>My partner Emily for managing our little monster Olivia on nights and weekends.</p>
