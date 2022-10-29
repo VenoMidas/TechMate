@@ -6,7 +6,8 @@ An app designed to allow a user ("technician") to update their status, and admin
 
 ### Screenshot
 
--- soon to come
+![Screenshot](./public/technicianView.png)
+![Screenshot](./public/dispatchView.png)
 
 ### Usage
 
@@ -14,13 +15,13 @@ An app designed to allow a user ("technician") to update their status, and admin
 2. As a user I want to be able tp view my current status
 3. As a user I want to be able to update my information
 4. As an admin I want to be able to view the status of all users
+5. As an admin I want to be able to inform technicians when work is dispatched
+6. As a user I want communication to happen instantly
 
 ### Roadmap
 
-1. Ability for users to modify the status details
-2. A unique status available for admin to set as technician status
+1. Ability for users to edit the status details
 3. Ability for admin to edit details of the unique status
-4. Socket.io for instant updating of technician status
 5. Ability to sort technicians and admin into teams
 6. Data tracking and analytics to improve process and workflow
 
