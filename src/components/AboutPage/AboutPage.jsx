@@ -14,10 +14,10 @@ function AboutPage() {
           <p>HTML</p>
           <p>CSS</p>
           <p>Javascript</p>
+          <p>Node.js</p>
           <p>Material UI</p>
           <p>React</p>
           <p>Redux and Redux-Saga</p>
-          <p>Node.js</p>
           <p>Express.js</p>
           <p>PostgreSQL</p>
 
@@ -26,7 +26,7 @@ function AboutPage() {
         <p>Next I'm excited to add the ability for users to edit the status messages</p>
 
         <h2>Acknowledgement</h2>
-        <p>My partner Emily for managing our little monster Olivia on nights and weekends.</p>
+        <p>My partner Emily</p>
         <p>My parents, in-laws, and other friends and family</p>
         <p>Prime faculty and staff</p>
         <p>Members of the Phrygian cohort</p>
