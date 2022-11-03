@@ -1,8 +1,12 @@
+![image](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
+
 # TechMate
 
 _Duration: Two week sprint_
 
 An app designed to allow a user ("technician") to update their status, and admin ("dispatcher") to be able to view the status of all the "techncians."
+
+[Deployed version of app on Heroku with Bit.io DB](https://morning-sands-43472.herokuapp.com/)
 
 ### Screenshot
 
@@ -81,24 +85,6 @@ Keep in mind that once you using the login route, Postman will manage your sessi
    3. `GET /api/user` will get user information, by default it's not very much
 
 After running the login route above, you can try any other route you've created that requires a logged in user!
-
-## Deployment
-
-### Production Build
-
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
-
-- Start postgres if not running already 
-- Run `npm start`
-- Navigate to `localhost:5000`
-
-1. Create a new Heroku project
-2. Link the Heroku project to the project GitHub Repo
-3. Create an Heroku Postgres database
-4. Connect to the Heroku Postgres database from Postico
-5. Create the necessary tables
-6. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-7. In the deploy section, select manual deploy
 
 ## Built With
 
