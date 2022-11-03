@@ -29,6 +29,7 @@ CREATE TABLE "message" (
 	"details" VARCHAR(255),
 	"created_at_timestamp" TIMESTAMPTZ NOT NULL DEFAULT NOW(), -- this will get updated by the auto trigger
 	"user_id" INTEGER REFERENCES "user"
+	ON DELETE CASCADE
 );
 
 -- create the trigger that runs on each row that is updated on the message table
