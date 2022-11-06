@@ -27,7 +27,9 @@ function App() {
   const dispatch = useDispatch();
 
   // socket.io
-  const socket = io("http://localhost:5000");
+  const IS_PROD = process.env.NODE_ENV === "production"; // check if we are in production environment
+  const URL = IS_PROD ? "https://morning-sands-43472.herokuapp.com" : "http://localhost:5000"; // if true set URL to URL, else use local host
+  const socket = io(URL);
 
   const user = useSelector(store => store.user);
 
