@@ -4,7 +4,7 @@
 
 _Duration: Two week sprint_
 
-An app designed to allow a user ("technician") to update their status, and admin ("dispatcher") to be able to view the status of all the "techncians."
+An app designed to allow a user ("technician") to update their status, and admin ("dispatcher") to be able to view the status of all the "technicians."
 
 [Deployed version of app on Heroku with Bit.io DB](https://morning-sands-43472.herokuapp.com/)
 
