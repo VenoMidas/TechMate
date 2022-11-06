@@ -109,7 +109,7 @@ function AllUsersView() {
 
                         return (
                             <>
-                                <ListItem>
+                                <ListItem key={user.id}>
                                     <ListItemAvatar>
                                         <Avatar src={user.position === 'Technician' ? technicianAvatar : businessAvatar} />
                                     </ListItemAvatar>

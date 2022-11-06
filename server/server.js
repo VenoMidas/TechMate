@@ -8,7 +8,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server, {
   cors: {
-    origin: ["https://morning-sands-43472.herokuapp.com", "http://localhost:5000"]
+    origin: ["https://morning-sands-43472.herokuapp.com", "http://localhost:3000"]
   }
 });
 io.on('connection', socket => {
